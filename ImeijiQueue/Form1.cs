@@ -102,6 +102,9 @@ namespace ImeijiQueue
             //Put the image title into the textbox for caption
             tbxTumblrCaption.Text = tumblingdown.Caption;
             tbxTumblrCaption.Select(tbxTumblrCaption.Text.Length, 0);
+
+            //Clear the Tumblr Tags
+            tbxTumblrTags.Text = "";
         }
 
         private void btnTumblrPostGo_Click(object sender, EventArgs e)
