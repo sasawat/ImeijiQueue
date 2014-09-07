@@ -15,6 +15,8 @@ namespace ImeijiQueue
     {
         TumblrPost tumblingdown;
 
+        int TumblrTagsLen; 
+
         public Form1()
         {
             InitializeComponent();
@@ -80,6 +82,9 @@ namespace ImeijiQueue
 
             //Image box so it scales the image down for the correct size
             picbxTheImage.SizeMode = PictureBoxSizeMode.Zoom;
+
+            //Set the tracker for the length of tumblr tags textbox to zero
+            TumblrTagsLen = 0;
         }
 
         private void btnPixivRetGo_Click(object sender, EventArgs e)
@@ -105,6 +110,7 @@ namespace ImeijiQueue
 
             //Clear the Tumblr Tags
             tbxTumblrTags.Text = "";
+            TumblrTagsLen = 0;
         }
 
         private void btnTumblrPostGo_Click(object sender, EventArgs e)
@@ -144,9 +150,11 @@ namespace ImeijiQueue
             //MessageBox.Show("Last char is " + tbxTumblrTags.Text[tbxTumblrTags.Text.Length - 1] + ".");
 
             //Check whether the user just created a new line, i.e. finished typing her most recent tag
-            if (tbxTumblrTags.Text != "" &&
-                tbxTumblrTags.Text[tbxTumblrTags.Text.Length - 1] == '\n')
+            if (tbxTumblrTags.Text != "" && //Stop array out of bounds of the next condition when the user deletes everything
+                tbxTumblrTags.Text[tbxTumblrTags.Text.Length - 1] == '\n' && //User just hit enter
+                tbxTumblrTags.Text.Length > TumblrTagsLen) //Otherwise backspace won't work because this will create a new line as soon as you backspace to the beginning of a line
             {
+
                 //She finished the tag, let's look for suggestions!
 
                 //Get all the tags entered so far
@@ -177,6 +185,9 @@ namespace ImeijiQueue
                 //Move the cursor to the end
                 tbxTumblrTags.SelectionStart = tbxTumblrTags.Text.Length;
             }
+
+            //Update the length of the textbox to the actual length
+            TumblrTagsLen = tbxTumblrTags.Text.Length;
         }
 
         private void btnOpenTSLManager_Click(object sender, EventArgs e)
