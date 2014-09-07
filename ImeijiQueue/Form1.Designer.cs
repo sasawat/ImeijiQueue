@@ -224,7 +224,7 @@
             this.Controls.Add(this.gbxTumblrPost);
             this.Controls.Add(this.gbxPixivRet);
             this.Name = "Form1";
-            this.Text = "ImeijiQueue V.1.0.1";
+            this.Text = "ImeijiQueue V.1.0.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbxPixivRet.ResumeLayout(false);
             this.gbxPixivRet.PerformLayout();
