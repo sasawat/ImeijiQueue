@@ -4,6 +4,7 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+ImeijiQueue/bin/*
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
@@ -13,6 +14,35 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.exe
+
+*.[Oo]bj
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ImeijiQueue/ipch/
+ImeijiQueue/[Oo]bj/
+ImeijiQueue/[Bb]in
+ImeijiQueue/[Dd]ebug*/
+ImeijiQueue/[Rr]elease*/
+Ankh.NoLoad
 
 # =========================
 # Operating System Files
@@ -26,8 +56,7 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must ends with two \r.
-Icon
-
+Icon
 # Thumbnails
 ._*
 
