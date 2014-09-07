@@ -249,6 +249,15 @@ namespace ImeijiQueue
 
         }
 
+        private void tbxTumblrTags_KeyDown(object sender, KeyEventArgs e)
+        {
+            //Handling select all on the tags textbox
+            if (e.Control & e.KeyCode == Keys.A)
+            {
+                tbxTumblrTags.SelectAll();
+            }
+        }
+
 
 
     }

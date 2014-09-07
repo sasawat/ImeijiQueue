@@ -142,6 +142,7 @@
             this.tbxTumblrTags.Size = new System.Drawing.Size(207, 175);
             this.tbxTumblrTags.TabIndex = 3;
             this.tbxTumblrTags.TextChanged += new System.EventHandler(this.tbxTumblrTags_TextChanged);
+            this.tbxTumblrTags.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxTumblrTags_KeyDown);
             // 
             // label3
             // 
