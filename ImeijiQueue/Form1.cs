@@ -112,10 +112,13 @@ namespace ImeijiQueue
             }
 
             //Put the tags into the TumblrPost
-            string[] tags = tbxTumblrTags.Text.Split('\n');
+            string[] tags = tbxTumblrTags.Text.Split(new char[] {'\r','\n'});
             foreach(string tag in tags)
             {
-                tumblingdown.addTag(tag);
+                if (tag != "")
+                {
+                    tumblingdown.addTag(tag);
+                }
             }
             
             //Put the caption into the TumblrPost
@@ -151,7 +154,7 @@ namespace ImeijiQueue
                 String append = "";
                 foreach(String suggestion in suggestions)
                 {
-                    append += suggestion + "\n";
+                    append += suggestion + "\r\n";
                 }
 
                 //Kill the final newline character
@@ -180,11 +183,23 @@ namespace ImeijiQueue
 
         private void tbxPHPSESSID_TextChanged(object sender, EventArgs e)
         {
-            Stream river = File.OpenWrite("PixivPHPSESSID");
-            StreamWriter riverRider = new StreamWriter(river);
-            PixivRetrieval.PixivCookie = tbxPHPSESSID.Text;
-            riverRider.Write(PixivRetrieval.PixivCookie);
-            river.Close();
+            try
+            {
+                Stream river = File.OpenWrite("PixivPHPSESSID");
+                StreamWriter riverRider = new StreamWriter(river);
+                PixivRetrieval.PixivCookie = tbxPHPSESSID.Text;
+                riverRider.Write(PixivRetrieval.PixivCookie);
+                riverRider.Flush();
+                river.Close();
+            }catch(Exception sEx)
+            {
+
+            }
+        }
+
+        private void picbxTheImage_Click(object sender, EventArgs e)
+        {
+
         }
 
         

@@ -177,6 +177,7 @@
             this.picbxTheImage.Size = new System.Drawing.Size(493, 368);
             this.picbxTheImage.TabIndex = 2;
             this.picbxTheImage.TabStop = false;
+            this.picbxTheImage.Click += new System.EventHandler(this.picbxTheImage_Click);
             // 
             // btnOpenTSLManager
             // 

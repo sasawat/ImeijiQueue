@@ -59,8 +59,7 @@ namespace ImeijiQueue
         {
             if(dicks.ContainsKey(tagIf))
             {
-                String[] oldTags = dicks[tagIf];
-                dicks[tagIf] = oldTags.Union(tagsThen).ToArray();
+                dicks[tagIf] = tagsThen;
             }
             else
             {

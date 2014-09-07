@@ -45,7 +45,7 @@ namespace ImeijiQueue
             //Put them into a newline separated string for display
             foreach (String tagThen in tagsThen)
             {
-                newSuggestions += tagThen + "\n";
+                newSuggestions += tagThen + "\r\n";
             }
 
             //Display the list of suggestions
@@ -60,7 +60,7 @@ namespace ImeijiQueue
             {
 
                 //Put each tag in the TagsThen TextBox into a list. They are separated by newline
-                List<String> tagsThen = tbxTagsThen.Text.Split('\n').ToList();
+                List<String> tagsThen = tbxTagsThen.Text.Split(new char[] {'\n','\r'}).ToList();
 
                 //Remove blank lines if any
                 while (tagsThen.Remove("")) ;
@@ -96,7 +96,10 @@ namespace ImeijiQueue
 
         private void tbxTagsThen_TextChanged(object sender, EventArgs e)
         {
-            //Doesn't matter had sex
+            if(tbxTagsThen.Text.Length != 0 && tbxTagsThen.Text[tbxTagsThen.Text.Length-1] == '\n')
+            {
+                parseTagsThenBox();
+            }
         }
 
         private void btnImport_Click(object sender, EventArgs e)

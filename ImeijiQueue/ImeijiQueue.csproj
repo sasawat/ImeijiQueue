@@ -50,12 +50,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTSLManage.cs" />
+    <Compile Include="FormTSLManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormTSLManage.Designer.cs">
       <DependentUpon>FormTSLManage.cs</DependentUpon>
     </Compile>
     <Compile Include="FuckingOAuthLogin.cs" />
-    <Compile Include="LoginManager.cs" />
+    <Compile Include="LoginManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LoginManager.Designer.cs">
       <DependentUpon>LoginManager.cs</DependentUpon>
     </Compile>
