@@ -43,6 +43,7 @@
             this.picbxTheImage = new System.Windows.Forms.PictureBox();
             this.btnOpenTSLManager = new System.Windows.Forms.Button();
             this.btnAccountManager = new System.Windows.Forms.Button();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.gbxPixivRet.SuspendLayout();
             this.gbxTumblrPost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picbxTheImage)).BeginInit();
@@ -201,18 +202,29 @@
             this.btnAccountManager.UseVisualStyleBackColor = true;
             this.btnAccountManager.Click += new System.EventHandler(this.btnAccountManager_Click);
             // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(640, 391);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(92, 23);
+            this.btnHelp.TabIndex = 5;
+            this.btnHelp.Text = "Help";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(744, 428);
+            this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnAccountManager);
             this.Controls.Add(this.btnOpenTSLManager);
             this.Controls.Add(this.picbxTheImage);
             this.Controls.Add(this.gbxTumblrPost);
             this.Controls.Add(this.gbxPixivRet);
             this.Name = "Form1";
-            this.Text = "ImeijiQueue V.1.0.0";
+            this.Text = "ImeijiQueue V.1.0.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbxPixivRet.ResumeLayout(false);
             this.gbxPixivRet.PerformLayout();
@@ -240,6 +252,7 @@
         private System.Windows.Forms.Button btnAccountManager;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbxPHPSESSID;
+        private System.Windows.Forms.Button btnHelp;
 
     }
 }
