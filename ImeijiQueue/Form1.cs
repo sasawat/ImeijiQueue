@@ -258,6 +258,11 @@ namespace ImeijiQueue
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(SauceNao.Sauce.lookup("http://cdn.awwni.me/ons8.jpg"));
+        }
+
 
 
     }

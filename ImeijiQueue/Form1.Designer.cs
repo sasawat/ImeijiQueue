@@ -44,6 +44,7 @@
             this.btnOpenTSLManager = new System.Windows.Forms.Button();
             this.btnAccountManager = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbxPixivRet.SuspendLayout();
             this.gbxTumblrPost.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picbxTheImage)).BeginInit();
@@ -53,6 +54,7 @@
             // 
             this.gbxPixivRet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbxPixivRet.Controls.Add(this.button1);
             this.gbxPixivRet.Controls.Add(this.label5);
             this.gbxPixivRet.Controls.Add(this.tbxPHPSESSID);
             this.gbxPixivRet.Controls.Add(this.btnPixivRetGo);
@@ -86,7 +88,7 @@
             // 
             this.btnPixivRetGo.Location = new System.Drawing.Point(10, 43);
             this.btnPixivRetGo.Name = "btnPixivRetGo";
-            this.btnPixivRetGo.Size = new System.Drawing.Size(204, 23);
+            this.btnPixivRetGo.Size = new System.Drawing.Size(92, 23);
             this.btnPixivRetGo.TabIndex = 2;
             this.btnPixivRetGo.Text = "Get!";
             this.btnPixivRetGo.UseVisualStyleBackColor = true;
@@ -213,6 +215,16 @@
             this.btnHelp.UseVisualStyleBackColor = true;
             this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(109, 44);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +266,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbxPHPSESSID;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Button button1;
 
     }
 }

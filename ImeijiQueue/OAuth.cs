@@ -60,14 +60,14 @@ namespace DashBuddy.API
             return content;
         }
 
-        private static string PostData(String url, string method, string header, Dictionary<string, object> parameters, System.Threading.CancellationToken cancelToken = default(System.Threading.CancellationToken))
+        public static string PostData(String url, string method, string header, Dictionary<string, object> parameters, System.Threading.CancellationToken cancelToken = default(System.Threading.CancellationToken))
         {
             var Response = (HttpWebResponse)PostDataResponse(url, method, header, parameters, cancelToken);
             StreamReader ResponseDataStream = new StreamReader(Response.GetResponseStream());
             return ResponseDataStream.ReadToEnd();
         }
 
-        private static WebResponse PostDataResponse(String url, string method, string header, Dictionary<string, object> parameters, System.Threading.CancellationToken cancelToken = default(System.Threading.CancellationToken))
+        public static WebResponse PostDataResponse(String url, string method, string header, Dictionary<string, object> parameters, System.Threading.CancellationToken cancelToken = default(System.Threading.CancellationToken))
         {
             HttpWebRequest Request;
             if (parameters == null)

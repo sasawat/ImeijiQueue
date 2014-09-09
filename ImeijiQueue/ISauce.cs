@@ -8,6 +8,26 @@ namespace ImeijiQueue
 {
     interface ISauce
     {
-        public static String lookup(String url);
+        String lookup(String url);
+    }
+
+    [Serializable]
+    public class SauceLookupFailedException : Exception
+    {
+        public errCode error {get; private set;}
+        public enum errCode {SauceNotFound, NetworkError, ParseFailed}
+
+        public SauceLookupFailedException() { }
+        public SauceLookupFailedException(errCode errorcode)
+        {
+            error = errorcode;
+        }
+        public SauceLookupFailedException(string message) : base(message) { }
+        public SauceLookupFailedException(string message, Exception inner) : base(message, inner) { }
+        protected SauceLookupFailedException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+
     }
 }
