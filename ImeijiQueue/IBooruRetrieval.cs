@@ -9,7 +9,7 @@ namespace ImeijiQueue
     interface IBooruRetrieval
     {
 
-        public byte[] getImage();
+        byte[] getImage();
 
         String getSauceURL();
 
@@ -33,7 +33,6 @@ namespace ImeijiQueue
         {
             error = errorcode;
         }
-        public BooruRetrievalFailedException() { }
         public BooruRetrievalFailedException(string message) : base(message) { }
         public BooruRetrievalFailedException(string message, Exception inner) : base(message, inner) { }
         protected BooruRetrievalFailedException(

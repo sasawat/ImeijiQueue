@@ -26,14 +26,16 @@ namespace ImeijiQueue
             Image = image;
         }
 
-        public static PixivRetrieval get(String id)
+        public static PixivRetrieval get(String url)
         {
-            //Validate ID
-            int ignore;
-            if(!int.TryParse(id, out ignore))
+            //Fetch the id from the url since I don't want to rewrite the rest of this to deal with urls instead of id
+            String id;
+            int startIndex;
+            if((startIndex = url.IndexOf("illust_id=")) == -1)
             {
-                throw new Exception("Invalid ID");
+                throw new Exception("Invalid URL");
             }
+            id = url.Substring(startIndex + 10);
             
             //Get the image and the title
             String strTit = getTitle(id);

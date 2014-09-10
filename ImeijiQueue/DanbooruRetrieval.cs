@@ -24,7 +24,7 @@ namespace ImeijiQueue
             Image = retrieveImage(imageURL);
 
             //Get the source
-            ISauce sriracha
+            ISauce sriracha;
             try
             {
                 sriracha = new SauceNao(imageURL);
@@ -105,12 +105,12 @@ namespace ImeijiQueue
             return memorylane.ToArray();
         }
 
-        public byte[] IBooruRetrieval.getImage()
+        byte[] IBooruRetrieval.getImage()
         {
             return Image;
         }
 
-        public string IBooruRetrieval.getSauceURL()
+        string IBooruRetrieval.getSauceURL()
         {
             return SauceURL;
         }

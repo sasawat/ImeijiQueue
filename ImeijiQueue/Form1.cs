@@ -258,11 +258,6 @@ namespace ImeijiQueue
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ISauce saucetest = new SauceNao("http://cdn.awwni.me/ons8.jpg");
-            MessageBox.Show(saucetest.getTitle() + ":" + saucetest.getSauceURL());
-        }
 
 
 
