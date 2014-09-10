@@ -260,7 +260,8 @@ namespace ImeijiQueue
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(SauceNao.Sauce.lookup("http://cdn.awwni.me/ons8.jpg"));
+            ISauce saucetest = new SauceNao("http://cdn.awwni.me/ons8.jpg");
+            MessageBox.Show(saucetest.getTitle() + ":" + saucetest.getSauceURL());
         }
 
 

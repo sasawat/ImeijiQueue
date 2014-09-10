@@ -8,7 +8,9 @@ namespace ImeijiQueue
 {
     interface ISauce
     {
-        String lookup(String url);
+        String getTitle();
+
+        String getSauceURL();
     }
 
     [Serializable]

@@ -9,17 +9,11 @@ namespace ImeijiQueue
 {
     class SauceNao : ISauce
     {
-        public static SauceNao Sauce = new SauceNao();
-        
-        private SauceNao()
+        private String SauceURL;
+        private String Title;
+
+        public SauceNao(String url)
         {
-
-        }
-
-        public String lookup(String url)
-        {
-            String sauce;
-
             //The url to request the source from
             String requesturl = "http://saucenao.com/search.php";
 
@@ -36,29 +30,31 @@ namespace ImeijiQueue
             try
             {
                 response = OAuth.PostData(requesturl, "GET", "", dick);
-            }catch(Exception sEx)
+            }
+            catch (Exception sEx)
             {
                 throw new SauceLookupFailedException(SauceLookupFailedException.errCode.NetworkError);
             }
 
             //Parse the response
+            int resultStartIndex;
             int startIndex;
             int len;
 
             //Look for the top result
-            if((startIndex = response.IndexOf("<div class=\"result\">")) == -1)
+            if ((resultStartIndex = response.IndexOf("<div class=\"result\">")) == -1)
             {
                 throw new SauceLookupFailedException(SauceLookupFailedException.errCode.SauceNotFound);
             }
 
             //Find the info box for the top result
-            if(((startIndex = response.IndexOf("<div class=\"resultcontentcolumn\">",startIndex)) == -1))
+            if (((resultStartIndex = response.IndexOf("<div class=\"resultcontentcolumn\">", resultStartIndex)) == -1))
             {
                 throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
             }
 
             //Find the link
-            if(((startIndex = response.IndexOf("<a href=\"", startIndex)) == -1))
+            if (((startIndex = response.IndexOf("<a href=\"", resultStartIndex)) == -1))
             {
                 throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
             }
@@ -66,17 +62,41 @@ namespace ImeijiQueue
 
             //Find the length of the link
             len = response.IndexOf("\"", startIndex) - startIndex;
-            if(len <= 0)
+            if (len <= 0)
             {
                 throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
             }
 
             //Extract the link
-            sauce = response.Substring(startIndex, len);
+            SauceURL = response.Substring(startIndex, len);
 
-            return sauce;
-            
+            //Parse and find the title
+            if ((startIndex = response.IndexOf("<div class=\"resulttitle\"><strong>", resultStartIndex)) == -1)
+            {
+                throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
+            }
+            startIndex += 33;
 
+            //Find the length of the title
+            len = response.IndexOf("</strong>", startIndex) - startIndex;
+            if (len <= 0)
+            {
+                throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
+            }
+
+            //Extract the title
+            Title = response.Substring(startIndex, len);
+
+        }
+
+        String ISauce.getTitle()
+        {
+            return Title;
+        }
+
+        String ISauce.getSauceURL()
+        {
+            return SauceURL;
         }
     }
 }
