@@ -20,12 +20,15 @@ namespace ImeijiQueue
 
         public PixivRetrieval(String url)
         {
+            //Just in case it has capitalization and shit
+            url = url.ToLower();
+
             //Fetch the id from the url since I don't want to rewrite the rest of this to deal with urls instead of id
             String id;
             int startIndex;
             if ((startIndex = url.IndexOf("illust_id=")) == -1)
             {
-                throw new Exception("Invalid URL");
+                throw new BooruRetrievalFailedException(BooruRetrievalFailedException.errCode.InvalidURL);
             }
             id = url.Substring(startIndex + 10);
 
