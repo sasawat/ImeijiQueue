@@ -9,47 +9,36 @@ using System.IO;
 
 namespace ImeijiQueue
 {
-    class PixivRetrieval
+    class PixivRetrieval : IBooruRetrieval
     {
         //Pixiv Login PHPSESSID cookie here
         public static String PixivCookie;
 
-        public String Title { get; private set; }
-        public String SrcUrl { get; private set; }
-        public byte[] Image { get; private set; }
+        private String Title;
+        private String SrcUrl;
+        private byte[] Image;
 
-
-        private PixivRetrieval(String title, String srcurl, byte[] image)
-        {
-            Title = title;
-            SrcUrl = srcurl;
-            Image = image;
-        }
-
-        public static PixivRetrieval get(String url)
+        public PixivRetrieval(String url)
         {
             //Fetch the id from the url since I don't want to rewrite the rest of this to deal with urls instead of id
             String id;
             int startIndex;
-            if((startIndex = url.IndexOf("illust_id=")) == -1)
+            if ((startIndex = url.IndexOf("illust_id=")) == -1)
             {
                 throw new Exception("Invalid URL");
             }
             id = url.Substring(startIndex + 10);
-            
-            //Get the image and the title
-            String strTit = getTitle(id);
-            byte[] pbImg = getImage(id);
 
-            //construct and return a PixivRetrieval
-            return new PixivRetrieval(
-                strTit,
-                "http://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + id, 
-                pbImg);
-            
+            //Get the image and the title
+            Title = retrieveTitle(id);
+            Image = retrieveImage(id);
+
+            //Set the sauce url
+            SrcUrl = "http://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + id;
+
         }
 
-        public static String getTitle(String id)
+        public static String retrieveTitle(String id)
         {
             //Our url to retrieve the stuff from Pixiv
             String strUrl = "http://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + id;
@@ -94,7 +83,7 @@ namespace ImeijiQueue
 
         }
 
-        public static byte[] getImage(String id)
+        public static byte[] retrieveImage(String id)
         {
             CookieContainer cookieJar = new CookieContainer();
             cookieJar.Add(new Cookie("PHPSESSID", PixivCookie, "/", ".pixiv.net"));
@@ -158,5 +147,20 @@ namespace ImeijiQueue
             return memorylane.ToArray();
         }
 
+
+        byte[] IBooruRetrieval.getImage()
+        {
+            return Image;
+        }
+
+        string IBooruRetrieval.getSauceURL()
+        {
+            return SrcUrl;
+        }
+
+        string IBooruRetrieval.getTitle()
+        {
+            return Title;
+        }
     }
 }
