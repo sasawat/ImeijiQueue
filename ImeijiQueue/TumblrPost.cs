@@ -19,7 +19,21 @@ namespace ImeijiQueue
 
         public TumblrPost(String url)
         {
-            IBooruRetrieval retrieval = new PixivRetrieval(url);
+            //Get the correct BooruRetrieval for the URL given to us
+            IBooruRetrieval retrieval;
+            url = url.ToLower(); //Makes life easier if everything is lowercase
+            if(url.Contains("pixiv.net"))
+            {
+                //Pixiv
+                retrieval = new PixivRetrieval(url);
+            }else if(url.Contains("danbooru.donmai.us"))
+            {
+                //Danbooru
+                retrieval = new DanbooruRetrieval(url);
+            }else
+            {
+                throw new BooruRetrievalFailedException(BooruRetrievalFailedException.errCode.InvalidURL);
+            }
 
             Caption = "<a href=\"" + retrieval.getSauceURL() + "\">" + retrieval.getTitle() + "</a>";
             SourceURL = retrieval.getSauceURL();
