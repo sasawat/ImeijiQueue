@@ -17,6 +17,13 @@ namespace ImeijiQueue
 
         public DanbooruRetrieval(String url)
         {
+            url = url.ToLower();
+            //Check that it's Danbooru, just in case some faggot called us on something else
+            if(!url.Contains("danbooru.donmai.us"))
+            {
+                throw new BooruRetrievalFailedException(BooruRetrievalFailedException.errCode.InvalidURL);
+            }
+
             //Get the image URL
             String imageURL = retrieveImageURL(url);
 

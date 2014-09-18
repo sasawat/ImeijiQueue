@@ -21,7 +21,7 @@ namespace ImeijiQueue
     public class BooruRetrievalFailedException : Exception
     {
         public errCode error {get; private set;}
-        public enum errCode {NetworkError, ParseFailed, SauceFailed}
+        public enum errCode {NetworkError, ParseFailed, SauceFailed, InvalidURL}
 
         public BooruRetrievalFailedException() { }
         public BooruRetrievalFailedException(errCode errorcode)
