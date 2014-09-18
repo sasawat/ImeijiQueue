@@ -17,13 +17,13 @@ namespace ImeijiQueue
 
         private List<String> TagList; 
 
-        public TumblrPost(String id)
+        public TumblrPost(String url)
         {
-            PixivRetrieval pixivretreival = PixivRetrieval.get(id);
+            IBooruRetrieval retrieval = new PixivRetrieval(url);
 
-            Caption = "<a href=\"" + pixivretreival.SrcUrl + "\">" + pixivretreival.Title + "</a>";
-            SourceURL = pixivretreival.SrcUrl;
-            ImageData = pixivretreival.Image;
+            Caption = "<a href=\"" + retrieval.getSauceURL() + "\">" + retrieval.getTitle() + "</a>";
+            SourceURL = retrieval.getSauceURL();
+            ImageData = retrieval.getImage();
             TagList = new List<string>();
             State = "queue";
         }
