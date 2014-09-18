@@ -30,7 +30,13 @@ namespace ImeijiQueue
             {
                 //Danbooru
                 retrieval = new DanbooruRetrieval(url);
-            }else
+            }else if(url.Contains("konachan.com"))
+            {
+                //Konachan
+                retrieval = new KonachanRetrieval(url);
+            }
+                //We don't your stoopid website
+            else
             {
                 throw new BooruRetrievalFailedException(BooruRetrievalFailedException.errCode.InvalidURL);
             }

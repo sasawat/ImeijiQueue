@@ -88,6 +88,7 @@
     <Compile Include="FuckingOAuthLogin.cs" />
     <Compile Include="IBooruRetrieval.cs" />
     <Compile Include="ISauce.cs" />
+    <Compile Include="KonachanRetrieval.cs" />
     <Compile Include="LoginManager.cs">
       <SubType>Form</SubType>
     </Compile>
