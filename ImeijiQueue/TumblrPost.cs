@@ -35,6 +35,11 @@ namespace ImeijiQueue
                 //Konachan
                 retrieval = new KonachanRetrieval(url);
             }
+            else if (url.Contains("safebooru.org"))
+            {
+                //Konachan
+                retrieval = new SafebooruRetrieval(url);
+            }
                 //We don't your stoopid website
             else
             {

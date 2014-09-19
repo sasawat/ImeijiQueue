@@ -108,17 +108,17 @@ namespace ImeijiQueue
 
         byte[] IBooruRetrieval.getImage()
         {
-            throw new NotImplementedException();
+            return Image;
         }
 
         string IBooruRetrieval.getSauceURL()
         {
-            throw new NotImplementedException();
+            return SrcURL;
         }
 
         string IBooruRetrieval.getTitle()
         {
-            throw new NotImplementedException();
+            return Title;
         }
     }
 }
