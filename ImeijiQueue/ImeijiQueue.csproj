@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DanbooruRetrieval.cs" />
+    <Compile Include="FileRetrieval.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

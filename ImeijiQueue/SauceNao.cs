@@ -48,10 +48,27 @@ namespace ImeijiQueue
             }
 
             //Find the info box for the top result
-            if (((resultStartIndex = response.IndexOf("<div class=\"resultcontentcolumn\">", resultStartIndex)) == -1))
+            if (((resultStartIndex = response.IndexOf("<div class=\"resultcontent\">", resultStartIndex)) == -1))
             {
                 throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
             }
+            //Parse and find the title
+            if ((startIndex = response.IndexOf("<div class=\"resulttitle\">", resultStartIndex)) == -1)
+            {
+                throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
+            }
+            startIndex += 33;
+
+            //Find the length of the title
+            len = response.IndexOf("</strong>", startIndex) - startIndex;
+            if (len <= 0)
+            {
+                throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
+            }
+
+            //Extract the title
+            Title = response.Substring(startIndex, len);
+
 
             //Find the link
             if (((startIndex = response.IndexOf("<a href=\"", resultStartIndex)) == -1))
@@ -69,23 +86,6 @@ namespace ImeijiQueue
 
             //Extract the link
             SauceURL = response.Substring(startIndex, len);
-
-            //Parse and find the title
-            if ((startIndex = response.IndexOf("<div class=\"resulttitle\"><strong>", resultStartIndex)) == -1)
-            {
-                throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
-            }
-            startIndex += 33;
-
-            //Find the length of the title
-            len = response.IndexOf("</strong>", startIndex) - startIndex;
-            if (len <= 0)
-            {
-                throw new SauceLookupFailedException(SauceLookupFailedException.errCode.ParseFailed);
-            }
-
-            //Extract the title
-            Title = response.Substring(startIndex, len);
 
         }
 

@@ -22,7 +22,12 @@ namespace ImeijiQueue
             //Get the correct BooruRetrieval for the URL given to us
             IBooruRetrieval retrieval;
             url = url.ToLower(); //Makes life easier if everything is lowercase
-            if(url.Contains("pixiv.net"))
+            if(url.Contains(".jpg") || url.Contains(".png") || url.Contains(".bmp") || url.Contains(".gif"))
+            {
+                //Just an image
+                retrieval = new FileRetrieval(url);
+            }
+            else if(url.Contains("pixiv.net"))
             {
                 //Pixiv
                 retrieval = new PixivRetrieval(url);
