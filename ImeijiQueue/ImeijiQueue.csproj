@@ -23,7 +23,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>70</ApplicationRevision>
-    <ApplicationVersion>1.1.420.%2a</ApplicationVersion>
+    <ApplicationVersion>1.2.420.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -78,6 +78,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1BlackEditionReloaded.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1BlackEditionReloaded.Designer.cs">
+      <DependentUpon>Form1BlackEditionReloaded.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTSLManage.cs">
       <SubType>Form</SubType>
